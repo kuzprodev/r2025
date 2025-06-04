@@ -1,6 +1,8 @@
-https://kuzprodev.github.io/r2025/
+https://kuzprodev.github.io/r2025
 
-https://github.com/kuzprodev/r2025/tree/main/lesson1
+https://github.com/kuzprodev/r2025/tree/main/lesson1   //for sharing
+
+https://kuzprodev.github.io/r2025/lesson1      //for sharing
 
 
 add/ - directory for additionally
