@@ -1,0 +1,6 @@
+https://kuzprodev.github.io/r2025/
+
+https://github.com/kuzprodev/r2025/tree/main/lesson1
+
+
+add/ - directory for additionally
