@@ -1,11 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lesson1</title>
+      <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
-<body>
 
+<body>
+    <div id="root"></div>
+
+
+    <script type="text/babel">
+
+
+      function Task1(){
+
+        const[passengers, setPassengers] = React.useState(10)
+
+const countBus = Math.ceil(passengers/20)
+const countBottle = passengers*2
+const countSandwiches = passengers*3
+
+
+return (
+    <div style={{padding:'10px 20px'}}>
+        <div style={{marginBottom:'30px'}}>
+            <h2>Задача 1. Вводиться кількість пасажирів. Вивести:</h2>
+            <ul>
+                <li>скільки потрібно автобусів (кожен автобус на 20 місць)</li>
+                <li>скільки пляшок води (кожному пасажиру 2 пляшки)</li>
+                <li>скільки бутербродів (кожному пасажиру 3 бутерброди)</li>
+            </ul>
+        </div>
+        <div>
+ <h3 style={{margin:0}}>Answer:</h3>
+                <label style={{}}>Введіть кількість пасажирів:
+                    <input type="number" id="countPas" placeholder="Введіть кількість пасажирів"  value={passengers} style={{width:'100%',maxWidth:'444px', marginTop: '10px'}} onChange={(e) => setPassengers(e.target.value)}/>
+                    </label>
+
+
+ <ul>
+                <li>Потрібно автобусів:  <span style={{fontWeight: 'bold'}}>{countBus}</span> для <span >{passengers}</span> пасажирів</li>
+                <li>{`Потрібно пляшок води: ${countBottle} для ${passengers}`}</li>
+                <li>{`Потрібно бутербродів: ${countSandwiches} для ${passengers}`}</li>
+            </ul>
+
+
+                </div>
+    </div>
+
+)
+      }
+
+      function App(){
+        return (
+            <React.Fragment>
+<h1>HW #1</h1>
+<Task1 />
+
+                </React.Fragment>
+        )
+      }
+
+
+ const root = ReactDOM.createRoot(document.getElementById('root'))
+      root.render(<App />)
+
+</script>
 </body>
+
 </html>
