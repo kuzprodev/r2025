@@ -1,0 +1,22 @@
+### macOS ###
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+# Folder config file
+Desktop.ini
+
+
+node_modules/
+*.swp
+yarn-error.log
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.pnp.*
+.idea
+.vscode
+
+
+#my files
+add/
