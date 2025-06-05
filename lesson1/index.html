@@ -27,7 +27,7 @@
 
         const[passengers, setPassengers] = React.useState(10)
 
-const countBus = Math.ceil(passengers/20)
+const countBus = Math.ceil(passengers/20) //округлення до цілого числа наверх бо 1/20 => 0.5, 27/20=>1.35
 const countBottle = passengers*2
 const countSandwiches = passengers*3
 
