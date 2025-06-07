@@ -1,8 +1,12 @@
 https://kuzprodev.github.io/r2025
 
-https://github.com/kuzprodev/r2025/tree/main/lesson1   //for sharing
 
-https://kuzprodev.github.io/r2025/lesson1      //for sharing
+//start for sharing
+https://github.com/kuzprodev/r2025/tree/main/lesson1
 
+https://kuzprodev.github.io/r2025/lesson1
+
+//stop for sharing
 
 add/ - directory for additionally
+inTheLesson/ -directory for  at a lecture
