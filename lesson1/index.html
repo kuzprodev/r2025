@@ -25,12 +25,15 @@
 
       function Task1(){
 
-        const[passengers, setPassengers] = React.useState(10)
+        const[passengers, setPassengers] = React.useState(0);
 
 const countBus = Math.ceil(passengers/20) //округлення до цілого числа наверх бо 1/20 => 0.5, 27/20=>1.35
 const countBottle = passengers*2
 const countSandwiches = passengers*3
 
+function quantity (val){
+ setPassengers(val)
+}
 
 return (
     <div style={{padding:'10px 20px'}}>
@@ -45,7 +48,7 @@ return (
         <div>
  <h3 style={{margin:0}}>Answer:</h3>
                 <label style={{}}>Введіть кількість пасажирів:
-                    <input type="number" id="countPas" placeholder="Введіть кількість пасажирів"  value={passengers} style={{width:'100%',maxWidth:'444px', marginTop: '10px'}} onChange={(e) => setPassengers(e.target.value)}/>
+                    <input type="number" min="0" placeholder="Введіть кількість пасажирів"  value={passengers} style={{width:'100%',maxWidth:'444px', marginTop: '10px'}} onChange={(e) => quantity(e.target.value) }/>
                     </label>
 
 
@@ -62,13 +65,70 @@ return (
 )
       }
 
+
+
+
+
+      function Task3(){
+          function getRandomNum(min, max) {
+                          return (
+                              parseInt(min) +
+                              Math.floor(Math.random() * (parseInt(max) - parseInt(min) + 1))
+                          )
+                      }
+          const[value, setValue] = React.useState({startNum: 0, stopNum: 33})
+
+          const[numberVal, setNumberVal] = React.useState(0)
+
+          function handlerClick(min, max){
+          setNumberVal(getRandomNum(min, max))
+          }
+return (
+
+ <div style={{padding:'10px 20px'}}>
+        <div style={{marginBottom:'30px'}}>
+            <h2>Задача 3.</h2>
+           <p>Задано початок та кінець діапазону. При натисканні на кнопку випадковим чином генерувати значення з вказаного діапазону та відображати його.</p>
+
+        </div>
+          <div>
+
+                <h3 style={{margin:0}}>Answer:</h3>
+                                <label>Початок діапазону:
+                                    <input type="number" placeholder="Введіть початкове число" value={value.startNum} onChange={(e) =>
+									setValue((prevValue) => ({
+										...prevValue,
+										startNum: e.target.value,
+									}))} style={{width:'100%',maxWidth:'444px', marginTop: '10px'}}/>
+                                    </label>
+                <br />
+                                <label>Кінець діапазону:
+                                    <input type="number" placeholder="Введіть кінцеве число" value={value.stopNum} onChange={(e) =>
+									setValue((prevValue) => ({
+										...prevValue,
+										stopNum: e.target.value,
+									}))} style={{width:'100%',maxWidth:'444px', marginTop: '10px'}}/>
+                                    </label>
+                                    <br />
+                                    <br />
+                                    <button onClick={()=>{handlerClick(value.startNum, value.stopNum)}}>генерувати значення</button>
+                <p>{`Згенероване число: ${numberVal}`}</p>
+
+            </div>
+            </div>
+)
+      }
+
       function App(){
         return (
             <React.Fragment>
-<h1>HW #1</h1>
-<Task1 />
+                <h1>HW #1</h1>
+                <Task1 />
+                <hr/>
+                <Task3 />
+                <hr/>
 
-                </React.Fragment>
+            </React.Fragment>
         )
       }
 
