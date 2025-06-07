@@ -44,4 +44,5 @@ lerna-debug.log*
 
 #my files
 add/
-test
+test/
+inTheLesson/
