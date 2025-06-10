@@ -137,6 +137,79 @@ return (
       root.render(<App />)
 
 </script>
+  <!--
+    option2
+
+
+		function NumbersGenerator() {
+
+			const [min, setMin] = React.useState('');
+			const [max, setMax] = React.useState('');
+			const [result, setResult] = React.useState(null);
+			const [error, setError] = React.useState('');
+
+			const generateNumber = () => {
+				const minNumber = parseInt(min);
+				const maxNumber = parseInt(max);
+
+				if (isNaN(minNumber) || isNaN(maxNumber)) {
+					setError('Будь ласка, введіть обидва значення.');
+					setResult(null);
+					return;
+				}
+
+				if (minNumber > maxNumber) {
+					setError('Мінімальне значення не може бути більшим за максимальне.');
+					setResult(null);
+					return;
+				}
+
+				const randomNumber = Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
+				setResult(randomNumber);
+				setError('');
+			};
+
+			return (
+				<div>
+					<h1><i>Генератор випадкового числа</i></h1>
+
+					<input
+						type="number"
+						placeholder="Мін"
+						value={min}
+						onChange={(e) => setMin(e.target.value)}
+					/>
+
+					<input
+						type="number"
+						placeholder="Макс"
+						value={max}
+						onChange={(e) => setMax(e.target.value)}
+					/>
+
+					<div>
+						<button onClick={generateNumber}>Згенерувати</button>
+					</div>
+
+					{error && <div className="error">{error}</div>}
+					{result !== null && <div className="result"> Згенероване число: {result}</div>}
+
+				</div>
+			);
+		}
+
+		function App() {
+			return <NumbersGenerator />;
+		}
+
+		const root = ReactDOM.createRoot(document.getElementById('root'));
+		root.render(<App />);
+
+
+
+
+
+    -->
 </body>
 
 </html>
