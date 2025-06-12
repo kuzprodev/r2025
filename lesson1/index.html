@@ -1,215 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>lesson1</title>
+		<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+		<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>lesson1</title>
-      <script
-      src="https://unpkg.com/react@18/umd/react.development.js"
-      crossorigin
-    ></script>
-    <script
-      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
-      crossorigin
-    ></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-</head>
+	<body>
+		<div id="root"></div>
 
-<body>
-    <div id="root"></div>
+		<script type="text/babel">
+			function Task1() {
+				const [passengers, setPassengers] = React.useState(0)
 
+				const countBus = Math.ceil(passengers / 20) //округлення до цілого числа наверх бо 1/20 => 0.5, 27/20=>1.35
+				const countBottle = passengers * 2
+				const countSandwiches = passengers * 3
 
-    <script type="text/babel">
-
-
-      function Task1(){
-
-        const[passengers, setPassengers] = React.useState(0);
-
-const countBus = Math.ceil(passengers/20) //округлення до цілого числа наверх бо 1/20 => 0.5, 27/20=>1.35
-const countBottle = passengers*2
-const countSandwiches = passengers*3
-
-function quantity (val){
- setPassengers(val)
-}
-
-return (
-    <div style={{padding:'10px 20px'}}>
-        <div style={{marginBottom:'30px'}}>
-            <h2>Задача 1. Вводиться кількість пасажирів. Вивести:</h2>
-            <ul>
-                <li>скільки потрібно автобусів (кожен автобус на 20 місць)</li>
-                <li>скільки пляшок води (кожному пасажиру 2 пляшки)</li>
-                <li>скільки бутербродів (кожному пасажиру 3 бутерброди)</li>
-            </ul>
-        </div>
-        <div>
- <h3 style={{margin:0}}>Answer:</h3>
-                <label style={{}}>Введіть кількість пасажирів:
-                    <input type="number" min="0" placeholder="Введіть кількість пасажирів"  value={passengers} style={{width:'100%',maxWidth:'444px', marginTop: '10px'}} onChange={(e) => quantity(e.target.value) }/>
-                    </label>
-
-
- <ul>
-                <li>Потрібно автобусів:  <span style={{fontWeight: 'bold'}}>{countBus}</span> для <span >{passengers}</span> пасажирів</li>
-                <li>{`Потрібно пляшок води: ${countBottle} для ${passengers}`}</li>
-                <li>{`Потрібно бутербродів: ${countSandwiches} для ${passengers}`}</li>
-            </ul>
-
-
-                </div>
-    </div>
-
-)
-      }
-
-
-
-
-
-      function Task3(){
-          function getRandomNum(min, max) {
-                          return (
-                              parseInt(min) +
-                              Math.floor(Math.random() * (parseInt(max) - parseInt(min) + 1))
-                          )
-                      }
-          const[value, setValue] = React.useState({startNum: 0, stopNum: 33})
-
-          const[numberVal, setNumberVal] = React.useState(0)
-
-          function handlerClick(min, max){
-          setNumberVal(getRandomNum(min, max))
-          }
-return (
-
- <div style={{padding:'10px 20px'}}>
-        <div style={{marginBottom:'30px'}}>
-            <h2>Задача 3.</h2>
-           <p>Задано початок та кінець діапазону. При натисканні на кнопку випадковим чином генерувати значення з вказаного діапазону та відображати його.</p>
-
-        </div>
-          <div>
-
-                <h3 style={{margin:0}}>Answer:</h3>
-                                <label>Початок діапазону:
-                                    <input type="number" placeholder="Введіть початкове число" value={value.startNum} onChange={(e) =>
-									setValue((prevValue) => ({
-										...prevValue,
-										startNum: e.target.value,
-									}))} style={{width:'100%',maxWidth:'444px', marginTop: '10px'}}/>
-                                    </label>
-                <br />
-                                <label>Кінець діапазону:
-                                    <input type="number" placeholder="Введіть кінцеве число" value={value.stopNum} onChange={(e) =>
-									setValue((prevValue) => ({
-										...prevValue,
-										stopNum: e.target.value,
-									}))} style={{width:'100%',maxWidth:'444px', marginTop: '10px'}}/>
-                                    </label>
-                                    <br />
-                                    <br />
-                                    <button onClick={()=>{handlerClick(value.startNum, value.stopNum)}}>генерувати значення</button>
-                <p>{`Згенероване число: ${numberVal}`}</p>
-
-            </div>
-            </div>
-)
-      }
-
-      function App(){
-        return (
-            <React.Fragment>
-                <h1>HW #1</h1>
-                <Task1 />
-                <hr/>
-                <Task3 />
-                <hr/>
-
-            </React.Fragment>
-        )
-      }
-
-
- const root = ReactDOM.createRoot(document.getElementById('root'))
-      root.render(<App />)
-
-</script>
-  <!--
-    option2
-
-
-		function NumbersGenerator() {
-
-			const [min, setMin] = React.useState('');
-			const [max, setMax] = React.useState('');
-			const [result, setResult] = React.useState(null);
-			const [error, setError] = React.useState('');
-
-			const generateNumber = () => {
-				const minNumber = parseInt(min);
-				const maxNumber = parseInt(max);
-
-				if (isNaN(minNumber) || isNaN(maxNumber)) {
-					setError('Будь ласка, введіть обидва значення.');
-					setResult(null);
-					return;
+				function quantity(val) {
+					setPassengers(val)
 				}
 
-				if (minNumber > maxNumber) {
-					setError('Мінімальне значення не може бути більшим за максимальне.');
-					setResult(null);
-					return;
-				}
+				return (
+					<div style={{ padding: '10px 20px' }}>
+						<div style={{ marginBottom: '30px' }}>
+							<h2>Задача 1. Вводиться кількість пасажирів. Вивести:</h2>
+							<ul>
+								<li>скільки потрібно автобусів (кожен автобус на 20 місць)</li>
+								<li>скільки пляшок води (кожному пасажиру 2 пляшки)</li>
+								<li>скільки бутербродів (кожному пасажиру 3 бутерброди)</li>
+							</ul>
+						</div>
+						<div>
+							<h3 style={{ margin: 0 }}>Answer:</h3>
+							<label style={{}}>
+								Введіть кількість пасажирів:
+								<input type='number' min='0' placeholder='Введіть кількість пасажирів' value={passengers} style={{ width: '100%', maxWidth: '444px', marginTop: '10px' }} onChange={e => quantity(e.target.value)} />
+							</label>
 
-				const randomNumber = Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
-				setResult(randomNumber);
-				setError('');
-			};
-
-			return (
-				<div>
-					<h1><i>Генератор випадкового числа</i></h1>
-
-					<input
-						type="number"
-						placeholder="Мін"
-						value={min}
-						onChange={(e) => setMin(e.target.value)}
-					/>
-
-					<input
-						type="number"
-						placeholder="Макс"
-						value={max}
-						onChange={(e) => setMax(e.target.value)}
-					/>
-
-					<div>
-						<button onClick={generateNumber}>Згенерувати</button>
+							<ul>
+								<li>
+									Потрібно автобусів: <span style={{ fontWeight: 'bold' }}>{countBus}</span> для <span>{passengers}</span> пасажирів
+								</li>
+								<li>{`Потрібно пляшок води: ${countBottle} для ${passengers}`}</li>
+								<li>{`Потрібно бутербродів: ${countSandwiches} для ${passengers}`}</li>
+							</ul>
+						</div>
 					</div>
+				)
+			}
 
-					{error && <div className="error">{error}</div>}
-					{result !== null && <div className="result"> Згенероване число: {result}</div>}
+			function Task3() {
+				function getRandomNum(min, max) {
+					return parseInt(min) + Math.floor(Math.random() * (parseInt(max) - parseInt(min) + 1))
+				}
+				const [value, setValue] = React.useState({ startNum: 0, stopNum: 33 })
 
-				</div>
-			);
-		}
+				const [numberVal, setNumberVal] = React.useState(0)
 
-		function App() {
-			return <NumbersGenerator />;
-		}
+				function handlerClick(min, max) {
+					setNumberVal(getRandomNum(min, max))
+				}
+				return (
+					<div style={{ padding: '10px 20px' }}>
+						<div style={{ marginBottom: '30px' }}>
+							<h2>Задача 3.</h2>
+							<p>Задано початок та кінець діапазону. При натисканні на кнопку випадковим чином генерувати значення з вказаного діапазону та відображати його.</p>
+						</div>
+						<div>
+							<h3 style={{ margin: 0 }}>Answer:</h3>
+							<label>
+								Початок діапазону:
+								<input
+									type='number'
+									placeholder='Введіть початкове число'
+									value={value.startNum}
+									onChange={e =>
+										setValue(prevValue => ({
+											...prevValue,
+											startNum: e.target.value,
+										}))
+									}
+									style={{ width: '100%', maxWidth: '444px', marginTop: '10px' }}
+								/>
+							</label>
+							<br />
+							<label>
+								Кінець діапазону:
+								<input
+									type='number'
+									placeholder='Введіть кінцеве число'
+									value={value.stopNum}
+									onChange={e =>
+										setValue(prevValue => ({
+											...prevValue,
+											stopNum: e.target.value,
+										}))
+									}
+									style={{ width: '100%', maxWidth: '444px', marginTop: '10px' }}
+								/>
+							</label>
+							<br />
+							<br />
+							<button
+								onClick={() => {
+									handlerClick(value.startNum, value.stopNum)
+								}}
+							>
+								генерувати значення
+							</button>
+							<p>{`Згенероване число: ${numberVal}`}</p>
+						</div>
+					</div>
+				)
+			}
 
-		const root = ReactDOM.createRoot(document.getElementById('root'));
-		root.render(<App />);
+			function App() {
+				return (
+					<React.Fragment>
+						<h1>HW #1</h1>
+						<Task1 />
+						<hr />
+						<Task3 />
+						<hr />
+					</React.Fragment>
+				)
+			}
 
-
-
-
-
-    -->
-</body>
-
+			const root = ReactDOM.createRoot(document.getElementById('root'))
+			root.render(<App />)
+		</script>
+	</body>
 </html>

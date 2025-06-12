@@ -46,3 +46,5 @@ lerna-debug.log*
 add/
 test/
 inTheLesson/
+notes.txt
+questions.txt
